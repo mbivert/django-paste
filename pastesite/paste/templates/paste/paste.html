@@ -2,6 +2,10 @@
 
 {% block content %}
 <h2>Viewing {{ id }}</h2>
+<div id="dates">
+	<span><u>Creation date</u>:</span> <span>{{ cdate }}</span>
+	<span><u>Last modification</u>:</span> <span>{{ mdate }}</span>
+</div>
 <pre>
 {{ content }}
 </pre>

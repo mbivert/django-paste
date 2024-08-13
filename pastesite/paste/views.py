@@ -5,7 +5,7 @@ from django.http      import HttpResponseRedirect
 
 def paste(request, id):
 	p = get_object_or_404(Paste, pk=id)
-	c = {"id" : p.id, "content" : p.content }
+	c = {"id" : p.id, "cdate" : p.cdate, "mdate" : p.mdate, "content" : p.content }
 	return render(request, "paste/paste.html", c)
 
 def index(request):
