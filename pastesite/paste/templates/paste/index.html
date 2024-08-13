@@ -1,0 +1,10 @@
+{% extends 'paste/main.html' %}
+
+{% block content %}
+<h2>Adding a new paste</h2>
+<form action="{% url 'paste:new' %}" method="POST">
+	{% csrf_token %}
+	<textarea id="content" name="content"></textarea>
+</pre>
+<input id="submit-paste" type="submit" value="Add">
+{% endblock %}
