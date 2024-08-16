@@ -9,8 +9,14 @@ from django.conf import settings
 
 PasteId = NewType('PasteId', str)
 
+def mkrandstr(n : int) -> str:
+	return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+
+def mkrandstr32() -> str:
+	return mkrandstr(32)
+
 def mkpasteid() -> PasteId:
-	return PasteId(''.join(random.choices(string.ascii_letters + string.digits, k=24)))
+	return PasteId(mkrandstr(24))
 
 # Can't be a lambda: "Cannot serialize function: lambda"
 def nowdjangotz():
@@ -23,6 +29,7 @@ class Paste(models.Model):
 	content = models.TextField()
 	cdate   = models.DateTimeField("creation date",     default=nowdjangotz)
 	mdate   = models.DateTimeField("modification date", default=nowdjangotz)
+	token   = models.CharField("ownership token",       default=mkrandstr32, max_length=32)
 
 	def save(self, *args, **kwargs):
 		while not self.id:
