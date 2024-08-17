@@ -9,8 +9,14 @@
 <pre>
 {{ content }}
 </pre>
-<form>
+<form action="{% url 'paste:do' %}" method="POST">
+	{% csrf_token %}
 	<label for="token">Ownership token: </label>
+	<input type="hidden" name="id" value="{{ id }}"></input>
 	<input name="token" type="text" value="{{ token }}"></input>
+	<button name="action" value="delete">Delete</button>
+	<button name="action" value="edit">Edit</button>
+	<br />
+	<textarea id="content" name="content">{{ content }}</textarea>
 </form>
 {% endblock %}

@@ -26,10 +26,18 @@
 				display               : grid;
 				grid-template-columns : 1fr 1fr;
 			}
+			#error {
+				text-align       : center;
+				color            : red;
+				font-size        : 2em;
+				background-color : lightgoldenrodyellow;
+				font-weight      : bold;
+			}
 		</style
 	</head>
 	<body>
 	<a id="home" href="/">🏠</a>
+	{% if error %}<div id="error">{{ error }}</div>{% endif %}
 	{% block content %}
 		<p>hello, world!</p>
 	{% endblock %}
